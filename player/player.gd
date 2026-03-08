@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 const SPEED = 5.5
+const JUMP_FORCE = 10
 var x_sensitivity = 0.4#0.2 is very slow while 0.9 is fast
 var y_sensitivity = 0.2
 var max_y_rotation = 60
@@ -15,7 +16,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		%Camera3D.rotation_degrees.x -= event.relative.y * y_sensitivity
 		%Camera3D.rotation_degrees.x = clamp(%Camera3D.rotation_degrees.x, min_y_rotation	, max_y_rotation)
 		
-	if event.is_action_pressed("ui_cancel"):
+	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta: float) -> void:
@@ -25,4 +26,11 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.x = direction.x * SPEED
 	velocity.z = direction.z * SPEED
+	
+	velocity.y -= 20 * delta
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_FORCE
+	elif Input.is_action_just_released("jump") and velocity.y > 0:
+		velocity.y = 0.5
+	
 	move_and_slide()

@@ -53,19 +53,19 @@ shadow_enabled = true
 directional_shadow_max_distance = 40.0
 
 [node name="Bridge2" type="CSGBox3D" parent="." unique_id=1914156870]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3778396, 0, 10.5)
 use_collision = true
 size = Vector3(4, 1, 3)
 material = SubResource("StandardMaterial3D_ooyhk")
 
 [node name="Bridge5" type="CSGBox3D" parent="." unique_id=1590498086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3655076, 0, 14.5)
 use_collision = true
 size = Vector3(4, 1, 3)
 material = SubResource("StandardMaterial3D_ooyhk")
 
 [node name="Bridge6" type="CSGBox3D" parent="." unique_id=766509143]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9405937, 0, 18.5)
 use_collision = true
 size = Vector3(4, 1, 3)
 material = SubResource("StandardMaterial3D_ooyhk")

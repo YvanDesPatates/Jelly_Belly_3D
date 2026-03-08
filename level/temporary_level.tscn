@@ -82,5 +82,5 @@ use_collision = true
 size = Vector3(9, 11, 9)
 material = SubResource("StandardMaterial3D_7l0sc")
 
-[node name="CharacterBody3D" parent="." unique_id=1218226840 instance=ExtResource("2_bc4qa")]
+[node name="Player" parent="." unique_id=1218226840 instance=ExtResource("2_bc4qa")]
 transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -0.10291302, 0.5, -0.6404228)

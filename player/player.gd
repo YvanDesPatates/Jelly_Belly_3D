@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 5.5
+const SPEED = 7
 const JUMP_FORCE = 10
 var x_sensitivity = 0.4#0.2 is very slow while 0.9 is fast
 var y_sensitivity = 0.2

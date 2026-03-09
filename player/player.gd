@@ -34,3 +34,17 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0.5
 	
 	move_and_slide()
+	
+	if Input.is_action_pressed("shoot"):
+		shoot_bullet()
+
+func shoot_bullet():
+	if ! %GunCooldwonTimer.is_stopped():
+		return
+	
+	%GunCooldwonTimer.start()
+	var bullet_scene = preload("uid://c5v85vh3dfudi")
+	var bullet: Node3D = bullet_scene.instantiate()
+	%BulletMarker3D.add_child(bullet)
+	
+	bullet.global_transform = %BulletMarker3D.global_transform

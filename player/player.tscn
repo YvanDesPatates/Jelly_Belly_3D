@@ -20,6 +20,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 [node name="gun_model" parent="Camera3D" unique_id=905717943 instance=ExtResource("1_oul6g")]
 transform = Transform3D(-0.182346, 0, 0.023601696, 0, 0.18386708, 0, -0.023601696, 0, -0.182346, 0.5149042, -0.22128522, -0.47111037)
 
+[node name="BulletMarker3D" type="Marker3D" parent="Camera3D" unique_id=1796803617]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5230621, -0.21829689, -0.58118004)
+
 [node name="Reticle" type="TextureRect" parent="." unique_id=1973723800]
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,3 +40,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_g1dw6")
 expand_mode = 1
+
+[node name="GunCooldwonTimer" type="Timer" parent="." unique_id=1516580803]
+unique_name_in_owner = true
+wait_time = 0.3
+one_shot = true

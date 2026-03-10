@@ -23,97 +23,98 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=682451244]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.70710677, 0, 4, 0)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1258178246]
 environment = SubResource("Environment_ijeiy")
 
-[node name="Environment" type="Node" parent="." unique_id=1372033183]
+[node name="WallsAndPlateforms" type="Node" parent="." unique_id=1372033183]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Environment" unique_id=2110617716]
+[node name="CSGBox3D" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=2110617716]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11, 0)
 use_collision = true
 size = Vector3(10, 22, 10)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Environment" unique_id=245294418]
+[node name="CSGBox3D4" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=245294418]
 transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 26, -1.0849552, 8)
 use_collision = true
 size = Vector3(10, 22, 10)
 material = ExtResource("3_l5ub2")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Environment" unique_id=2074918484]
+[node name="CSGBox3D5" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=2074918484]
 transform = Transform3D(0.9999977, 9.612625e-12, 0.0021991131, -9.612628e-11, 0.099999964, -1.06821487e-13, -0.0021991131, -1.0682144e-14, 0.9999977, 13, -1.0849552, 4)
 use_collision = true
 size = Vector3(10, 22, 10)
 material = ExtResource("3_l5ub2")
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="Environment" unique_id=873896369]
+[node name="CSGBox3D15" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=873896369]
 transform = Transform3D(0.9999977, 9.612625e-12, 0.0021991131, -9.612628e-11, 0.099999964, -1.06821487e-13, -0.0021991131, -1.0682144e-14, 0.9999977, -30.500002, 1.9150448, 11.9989)
 use_collision = true
 size = Vector3(5, 22, 6)
 material = ExtResource("3_l5ub2")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Environment" unique_id=215008671]
+[node name="CSGBox3D2" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=215008671]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11, 18.5)
 use_collision = true
 size = Vector3(10, 22, 19)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Environment" unique_id=270685873]
+[node name="CSGBox3D6" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=270685873]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -11, 25.5)
 use_collision = true
 size = Vector3(28, 22, 5)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="Environment" unique_id=293644180]
+[node name="CSGBox3D13" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=293644180]
 transform = Transform3D(0.98480785, -0.17364821, 0, 0.17364821, 0.98480785, 0, 0, 0, 1, 16.829628, -8.105905, 48)
 use_collision = true
 size = Vector3(38, 22, 5)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="Environment" unique_id=417245596]
+[node name="CSGBox3D10" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=417245596]
 transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, -34, -11.5, 25.5)
 use_collision = true
 size = Vector3(28, 22, 5)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="Environment" unique_id=1808332116]
+[node name="CSGBox3D11" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=1808332116]
 transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, -30, -9.23, -1.5)
 use_collision = true
 size = Vector3(28, 22, 5)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Environment" unique_id=1036230755]
+[node name="CSGBox3D7" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=1036230755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -11, -1.5)
 use_collision = true
 size = Vector3(18, 22, 5)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Environment" unique_id=1545399696]
+[node name="CSGBox3D8" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=1545399696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1, -11, 12)
 use_collision = true
 size = Vector3(5, 22, 22)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="Environment" unique_id=550590739]
+[node name="CSGBox3D14" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=550590739]
 transform = Transform3D(0.9396925, 0, -0.34202015, 0, 1, 0, 0.34202015, 0, 0.9396925, -10.068331, -0.7, 11.722864)
 use_collision = true
 size = Vector3(2, 1, 25)
 material = ExtResource("3_l5ub2")
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="Environment" unique_id=368983028]
+[node name="CSGBox3D12" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=368983028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1000004, -11, 39)
 use_collision = true
 size = Vector3(5, 22, 22)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="Environment" unique_id=237043844]
+[node name="CSGBox3D9" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=237043844]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.1, -8, 12)
 use_collision = true
 size = Vector3(5, 26, 32)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Environment" unique_id=978380681]
+[node name="CSGBox3D3" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=978380681]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32.5, -5, 32)
 use_collision = true
 size = Vector3(27, 22, 48)

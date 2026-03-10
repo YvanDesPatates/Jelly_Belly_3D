@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dt3mlaxjvqtti"]
+
+[ext_resource type="PackedScene" uid="uid://cvhu3pf36eme3" path="res://mob/bat/bat_model.tscn" id="1_tg6dn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_04oik"]
+size = Vector3(0.40274048, 0.43629456, 0.5888672)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8beqc"]
+radius = 0.31516606
+
+[node name="Bat" type="RigidBody3D" unique_id=1883107278]
+gravity_scale = 0.0
+
+[node name="bat_model" parent="." unique_id=2112324087 instance=ExtResource("1_tg6dn")]
+
+[node name="WingsCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1019767033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52201843, 0.19164276, 0)
+shape = SubResource("BoxShape3D_04oik")
+
+[node name="WingsCollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1930266546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52848816, 0.19164276, 0)
+shape = SubResource("BoxShape3D_04oik")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1925891122]
+shape = SubResource("SphereShape3D_8beqc")

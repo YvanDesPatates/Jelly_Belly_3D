@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://cchrdtla3353l"]
 
+[ext_resource type="Script" uid="uid://jpmqhrjslmcy" path="res://mob/bat.gd" id="1_8jqrf"]
 [ext_resource type="PackedScene" uid="uid://cxbbeq53tifsu" path="res://player/player.tscn" id="1_bk1rt"]
 [ext_resource type="Material" uid="uid://dfvkl4a7xs4y" path="res://level/purple_ground.tres" id="2_hjeur"]
 [ext_resource type="Material" uid="uid://bxdrynee85yt1" path="res://level/yellow_platform.tres" id="3_l5ub2"]
 [ext_resource type="Script" uid="uid://dichtufjbj5hg" path="res://level/TurningPlateform.gd" id="4_hjeur"]
 [ext_resource type="Script" uid="uid://vqfuouvfka5p" path="res://level/MoovingPlateform.gd" id="4_l5ub2"]
+[ext_resource type="PackedScene" uid="uid://dt3mlaxjvqtti" path="res://mob/bat.tscn" id="7_xkvjb"]
 
 [sub_resource type="Environment" id="Environment_ijeiy"]
 background_mode = 1
@@ -19,9 +21,10 @@ fog_height = -2.0
 fog_height_density = 0.3
 
 [node name="Game" type="Node3D" unique_id=736855]
+script = ExtResource("1_8jqrf")
 
 [node name="Player" parent="." unique_id=1218226840 instance=ExtResource("1_bk1rt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 0, -1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=682451244]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.7071068, 0, -0.7071068, 0.70710677, 0, 4, 0)
@@ -131,3 +134,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32.5
 use_collision = true
 size = Vector3(27, 22, 48)
 material = ExtResource("2_hjeur")
+
+[node name="Bat" parent="." unique_id=1883107278 instance=ExtResource("7_xkvjb")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 1, 12)

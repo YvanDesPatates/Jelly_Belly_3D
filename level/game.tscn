@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cxbbeq53tifsu" path="res://player/player.tscn" id="1_bk1rt"]
 [ext_resource type="Material" uid="uid://dfvkl4a7xs4y" path="res://level/purple_ground.tres" id="2_hjeur"]
 [ext_resource type="Material" uid="uid://bxdrynee85yt1" path="res://level/yellow_platform.tres" id="3_l5ub2"]
+[ext_resource type="Script" uid="uid://dichtufjbj5hg" path="res://level/TurningPlateform.gd" id="4_hjeur"]
+[ext_resource type="Script" uid="uid://vqfuouvfka5p" path="res://level/MoovingPlateform.gd" id="4_l5ub2"]
 
 [sub_resource type="Environment" id="Environment_ijeiy"]
 background_mode = 1
@@ -41,18 +43,26 @@ transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 26, -1.0849552, 8)
 use_collision = true
 size = Vector3(10, 22, 10)
 material = ExtResource("3_l5ub2")
+script = ExtResource("4_l5ub2")
+limit_distance = 2.5
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=2074918484]
 transform = Transform3D(0.9999977, 9.612625e-12, 0.0021991131, -9.612628e-11, 0.099999964, -1.06821487e-13, -0.0021991131, -1.0682144e-14, 0.9999977, 13, -1.0849552, 4)
 use_collision = true
 size = Vector3(10, 22, 10)
 material = ExtResource("3_l5ub2")
+script = ExtResource("4_l5ub2")
+moove_direction = Vector3(0, 0, 1)
+limit_distance = 2.5
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=873896369]
 transform = Transform3D(0.9999977, 9.612625e-12, 0.0021991131, -9.612628e-11, 0.099999964, -1.06821487e-13, -0.0021991131, -1.0682144e-14, 0.9999977, -30.500002, 1.9150448, 11.9989)
 use_collision = true
 size = Vector3(5, 22, 6)
 material = ExtResource("3_l5ub2")
+script = ExtResource("4_l5ub2")
+moove_direction = Vector3(0, 0, 1)
+limit_distance = 5.0
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=215008671]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11, 18.5)
@@ -101,6 +111,8 @@ transform = Transform3D(0.9396925, 0, -0.34202015, 0, 1, 0, 0.34202015, 0, 0.939
 use_collision = true
 size = Vector3(2, 1, 25)
 material = ExtResource("3_l5ub2")
+script = ExtResource("4_hjeur")
+speed = 1.0
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=368983028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1000004, -11, 39)

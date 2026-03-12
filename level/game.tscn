@@ -5,6 +5,8 @@
 [ext_resource type="Material" uid="uid://bxdrynee85yt1" path="res://level/yellow_platform.tres" id="3_l5ub2"]
 [ext_resource type="Script" uid="uid://vqfuouvfka5p" path="res://level/MoovingPlateform.gd" id="4_l5ub2"]
 [ext_resource type="PackedScene" uid="uid://cy48d7vcv2jyb" path="res://mob/ennemy.tscn" id="5_l5ub2"]
+[ext_resource type="Script" uid="uid://qn138cn5r048" path="res://mob/spawners_manager.gd" id="6_8jqrf"]
+[ext_resource type="PackedScene" uid="uid://dqif2r4xg7gkr" path="res://mob/spawner.tscn" id="6_to0a4"]
 
 [sub_resource type="GDScript" id="GDScript_to0a4"]
 script/source = "extends Node3D
@@ -116,6 +118,21 @@ surface_material_override/0 = ExtResource("3_l5ub2")
 transform = Transform3D(0.99999994, 9.398343e-19, 0, -3.1826416e-17, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 shape = SubResource("BoxShape3D_l5ub2")
 
+[node name="PlateformAnimatable4" type="AnimatableBody3D" parent="WallsAndPlateforms" unique_id=1478132463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2736988, -1.0849552, -12.718876)
+script = ExtResource("4_l5ub2")
+moove_direction = Vector3(0, 0, 1)
+limit_distance = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallsAndPlateforms/PlateformAnimatable4" unique_id=1346649628]
+transform = Transform3D(9.859854, 0, 0, 0, 2.24498, 0, 0, 0, 9.898451, 0, 0, 0)
+mesh = SubResource("BoxMesh_l5ub2")
+surface_material_override/0 = ExtResource("3_l5ub2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallsAndPlateforms/PlateformAnimatable4" unique_id=637416599]
+transform = Transform3D(0.99999994, 9.398343e-19, 0, -3.1826416e-17, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+shape = SubResource("BoxShape3D_l5ub2")
+
 [node name="PlateformAnimatable3" type="AnimatableBody3D" parent="WallsAndPlateforms" unique_id=1920313267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.890379, -1.0849552, 8.969493)
 script = ExtResource("4_l5ub2")
@@ -180,8 +197,20 @@ use_collision = true
 size = Vector3(18, 22, 5)
 material = ExtResource("2_hjeur")
 
+[node name="CSGBox3D15" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=696863357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -11, -23.5)
+use_collision = true
+size = Vector3(18, 22, 5)
+material = ExtResource("2_hjeur")
+
 [node name="CSGBox3D8" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=1545399696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1, -11, 12)
+use_collision = true
+size = Vector3(5, 22, 22)
+material = ExtResource("2_hjeur")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=1713593901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1, -11, -15)
 use_collision = true
 size = Vector3(5, 22, 22)
 material = ExtResource("2_hjeur")
@@ -221,3 +250,20 @@ material = ExtResource("2_hjeur")
 
 [node name="Ennemy" parent="." unique_id=730489655 instance=ExtResource("5_l5ub2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03584099, 0.5, 3.8958793)
+
+[node name="SpawnersManager" type="Node" parent="." unique_id=624069427]
+script = ExtResource("6_8jqrf")
+
+[node name="Spawner" parent="SpawnersManager" unique_id=2142684305 instance=ExtResource("6_to0a4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 7, 30)
+
+[node name="Spawner2" parent="SpawnersManager" unique_id=201307794 instance=ExtResource("6_to0a4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 8, 17)
+
+[node name="Spawner3" parent="SpawnersManager" unique_id=86596007 instance=ExtResource("6_to0a4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7936707, 2.1306915, -30.375057)
+
+[node name="SpawnTimer" type="Timer" parent="SpawnersManager" unique_id=622784395]
+autostart = true
+
+[connection signal="timeout" from="SpawnersManager/SpawnTimer" to="SpawnersManager" method="_on_spawn_timer_timeout"]

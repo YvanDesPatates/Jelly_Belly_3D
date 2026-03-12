@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dqif2r4xg7gkr"]
+
+[ext_resource type="PackedScene" uid="uid://blun4r5eihflb" path="res://mob/spawner_model.tscn" id="1_nvdw2"]
+[ext_resource type="Script" uid="uid://dsakphhb5ijp8" path="res://mob/spawner.gd" id="1_wag3n"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wag3n"]
+radius = 1.1836051
+
+[node name="Spawner_handler" type="StaticBody3D" unique_id=2142684305]
+script = ExtResource("1_wag3n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1384003980]
+shape = SubResource("SphereShape3D_wag3n")
+
+[node name="spawner_model" parent="." unique_id=1629977900 instance=ExtResource("1_nvdw2")]

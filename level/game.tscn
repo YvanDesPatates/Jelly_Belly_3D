@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxbbeq53tifsu" path="res://player/player.tscn" id="1_bk1rt"]
 [ext_resource type="Material" uid="uid://dfvkl4a7xs4y" path="res://level/purple_ground.tres" id="2_hjeur"]
 [ext_resource type="Material" uid="uid://bxdrynee85yt1" path="res://level/yellow_platform.tres" id="3_l5ub2"]
-[ext_resource type="Script" uid="uid://dichtufjbj5hg" path="res://level/TurningPlateform.gd" id="4_hjeur"]
 [ext_resource type="Script" uid="uid://vqfuouvfka5p" path="res://level/MoovingPlateform.gd" id="4_l5ub2"]
-[ext_resource type="PackedScene" uid="uid://dt3mlaxjvqtti" path="res://mob/bat.tscn" id="7_xkvjb"]
 
 [sub_resource type="Environment" id="Environment_ijeiy"]
 background_mode = 1
@@ -19,6 +17,59 @@ fog_light_color = Color(0.08706427, 0.57396066, 0.8259649, 1)
 fog_density = 0.0
 fog_height = -2.0
 fog_height_density = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_l5ub2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l5ub2"]
+size = Vector3(9.762695, 2.196289, 9.908203)
+
+[sub_resource type="BoxMesh" id="BoxMesh_to0a4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jqrf"]
+size = Vector3(4.951172, 2.1621094, 5.970703)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8jqrf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xkvjb"]
+size = Vector3(2.149414, 0.99902344, 22.579102)
+
+[sub_resource type="Animation" id="Animation_l5ub2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.34906587, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_to0a4"]
+resource_name = "turning_plateform"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.34906587, 0), Vector3(0, 5.934119, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jqrf"]
+_data = {
+&"RESET": SubResource("Animation_l5ub2"),
+&"turning_plateform": SubResource("Animation_to0a4")
+}
 
 [node name="Game" type="Node3D" unique_id=736855]
 script = ExtResource("1_8jqrf")
@@ -41,31 +92,48 @@ use_collision = true
 size = Vector3(10, 22, 10)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=245294418]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 26, -1.0849552, 8)
-use_collision = true
-size = Vector3(10, 22, 10)
-material = ExtResource("3_l5ub2")
-script = ExtResource("4_l5ub2")
-limit_distance = 2.5
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=2074918484]
-transform = Transform3D(0.9999977, 9.612625e-12, 0.0021991131, -9.612628e-11, 0.099999964, -1.06821487e-13, -0.0021991131, -1.0682144e-14, 0.9999977, 13, -1.0849552, 4)
-use_collision = true
-size = Vector3(10, 22, 10)
-material = ExtResource("3_l5ub2")
+[node name="PlateformAnimatable2" type="AnimatableBody3D" parent="WallsAndPlateforms" unique_id=264367128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1.0849552, 4)
 script = ExtResource("4_l5ub2")
 moove_direction = Vector3(0, 0, 1)
 limit_distance = 2.5
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=873896369]
-transform = Transform3D(0.9999977, 9.612625e-12, 0.0021991131, -9.612628e-11, 0.099999964, -1.06821487e-13, -0.0021991131, -1.0682144e-14, 0.9999977, -30.500002, 1.9150448, 11.9989)
-use_collision = true
-size = Vector3(5, 22, 6)
-material = ExtResource("3_l5ub2")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallsAndPlateforms/PlateformAnimatable2" unique_id=910902713]
+transform = Transform3D(9.859854, 0, 0, 0, 2.24498, 0, 0, 0, 9.898451, 0, 0, 0)
+mesh = SubResource("BoxMesh_l5ub2")
+surface_material_override/0 = ExtResource("3_l5ub2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallsAndPlateforms/PlateformAnimatable2" unique_id=279048071]
+transform = Transform3D(0.99999994, 9.398343e-19, 0, -3.1826416e-17, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+shape = SubResource("BoxShape3D_l5ub2")
+
+[node name="PlateformAnimatable3" type="AnimatableBody3D" parent="WallsAndPlateforms" unique_id=1920313267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.890379, -1.0849552, 8.969493)
 script = ExtResource("4_l5ub2")
-moove_direction = Vector3(0, 0, 1)
+limit_distance = 2.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallsAndPlateforms/PlateformAnimatable3" unique_id=1700996755]
+transform = Transform3D(9.859854, 0, 0, 0, 2.24498, 0, 0, 0, 9.898451, 0, 0, 0)
+mesh = SubResource("BoxMesh_l5ub2")
+surface_material_override/0 = ExtResource("3_l5ub2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallsAndPlateforms/PlateformAnimatable3" unique_id=990516341]
+transform = Transform3D(0.99999994, 9.398343e-19, 0, -3.1826416e-17, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+shape = SubResource("BoxShape3D_l5ub2")
+
+[node name="PlateformAnimatableBody3D" type="AnimatableBody3D" parent="WallsAndPlateforms" unique_id=198096786]
+transform = Transform3D(0.99999756, 9.612626e-11, 0.002199113, -9.612627e-11, 1, -1.0457129e-13, -0.002199113, -1.0682147e-13, 0.99999756, -30.500002, 1.9150448, 11.9989)
+script = ExtResource("4_l5ub2")
 limit_distance = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallsAndPlateforms/PlateformAnimatableBody3D" unique_id=1405687498]
+transform = Transform3D(4.900985, 6.6143744e-18, 0, 4.1079404e-17, 2.1549075, 0, 9.313226e-10, 0, 5.8792815, 0, 0, 0)
+mesh = SubResource("BoxMesh_to0a4")
+surface_material_override/0 = ExtResource("3_l5ub2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallsAndPlateforms/PlateformAnimatableBody3D" unique_id=1173294473]
+transform = Transform3D(1.0000025, -1.0093456e-18, 1.21071935e-08, 1.6552726e-16, 1, -1.4433441e-18, -2.910383e-08, -2.5072175e-19, 1.0000025, 0, 0, 0)
+shape = SubResource("BoxShape3D_8jqrf")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=215008671]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11, 18.5)
@@ -109,13 +177,20 @@ use_collision = true
 size = Vector3(5, 22, 22)
 material = ExtResource("2_hjeur")
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=550590739]
-transform = Transform3D(0.9396925, 0, -0.34202015, 0, 1, 0, 0.34202015, 0, 0.9396925, -10.068331, -0.7, 11.722864)
-use_collision = true
-size = Vector3(2, 1, 25)
-material = ExtResource("3_l5ub2")
-script = ExtResource("4_hjeur")
-speed = 1.0
+[node name="PlateformAnimatable" type="AnimatableBody3D" parent="WallsAndPlateforms" unique_id=1392454934]
+transform = Transform3D(0.9396926, 0, -0.34202015, 0, 1, 0, 0.34202015, 0, 0.9396926, -10.266517, -0.7, 12.267374)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallsAndPlateforms/PlateformAnimatable" unique_id=1979198759]
+transform = Transform3D(2.0548205, 0, 0, 0, 1.0607113, 0, 0, 0, 22.679998, 0, 0, 0)
+mesh = SubResource("BoxMesh_8jqrf")
+surface_material_override/0 = ExtResource("3_l5ub2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallsAndPlateforms/PlateformAnimatable" unique_id=1005495730]
+shape = SubResource("BoxShape3D_xkvjb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WallsAndPlateforms/PlateformAnimatable" unique_id=897553368]
+libraries/ = SubResource("AnimationLibrary_8jqrf")
+autoplay = &"turning_plateform"
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="WallsAndPlateforms" unique_id=368983028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1000004, -11, 39)
@@ -134,6 +209,3 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32.5
 use_collision = true
 size = Vector3(27, 22, 48)
 material = ExtResource("2_hjeur")
-
-[node name="Bat" parent="." unique_id=1883107278 instance=ExtResource("7_xkvjb")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 1, 12)

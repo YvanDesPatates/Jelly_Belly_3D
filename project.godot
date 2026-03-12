@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="3D-GDQuest-tuto"
+config/name="Jelly_Belly_3D"
 run/main_scene="uid://cchrdtla3353l"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"

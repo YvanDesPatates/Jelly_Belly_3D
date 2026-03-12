@@ -5,10 +5,10 @@ extends RigidBody3D
 
 const SPEED = 3
 
-func _physics_process(delta: float) -> void:
+func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	look_at(player.global_position)
 	linear_velocity = global_transform.basis * Vector3(0,0,-SPEED)
 
+
 func take_damage():
-	print_debug("touch")
 	animation_player.play("hurt")

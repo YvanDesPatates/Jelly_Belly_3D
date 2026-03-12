@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://cy48d7vcv2jyb"]
+
+[ext_resource type="Script" uid="uid://d15yc50cliri6" path="res://mob/ennemy.gd" id="1_12j10"]
+[ext_resource type="Shader" uid="uid://ywb87obdqpmd" path="res://mob/blob_ennemy.gdshader" id="2_e16ey"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8dqw5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_f3frg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_30vkk"]
+render_priority = 0
+shader = ExtResource("2_e16ey")
+shader_parameter/body_color = Color(0.039304763, 0.22148341, 0.19185108, 1)
+shader_parameter/acceleration = 20.0
+
+[sub_resource type="Animation" id="Animation_e16ey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:surface_material_override/0:shader_parameter/body_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.039304763, 0.22148341, 0.19185108, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:surface_material_override/0:shader_parameter/acceleration")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5, 1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_ymogv"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:surface_material_override/0:shader_parameter/body_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25189725, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.039304763, 0.22148341, 0.19185108, 1), Color(0.3510389, 0.06563955, 0.071197756, 1), Color(0.039304763, 0.22148341, 0.19185108, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:surface_material_override/0:shader_parameter/acceleration")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25189725, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [20.0, 20.05, 20.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25189725, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5, 1.5, 1.5), Vector3(1.8, 1.8, 1.8), Vector3(1.5, 1.5, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e16ey"]
+_data = {
+&"RESET": SubResource("Animation_e16ey"),
+&"hurt": SubResource("Animation_ymogv")
+}
+
+[node name="Ennemy" type="RigidBody3D" unique_id=730489655]
+gravity_scale = 0.0
+script = ExtResource("1_12j10")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=946755429]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_8dqw5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=311488680]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_f3frg")
+surface_material_override/0 = SubResource("ShaderMaterial_30vkk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1527360838]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_e16ey")

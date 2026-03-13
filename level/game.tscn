@@ -6,14 +6,27 @@
 [ext_resource type="Script" uid="uid://vqfuouvfka5p" path="res://level/MoovingPlateform.gd" id="4_l5ub2"]
 [ext_resource type="Script" uid="uid://qn138cn5r048" path="res://mob/spawners_manager.gd" id="6_8jqrf"]
 [ext_resource type="PackedScene" uid="uid://dqif2r4xg7gkr" path="res://mob/spawner.tscn" id="6_to0a4"]
+[ext_resource type="Script" uid="uid://uqn42n1i0vjg" path="res://level/end_zone_player_killer.gd" id="7_8jqrf"]
 
 [sub_resource type="GDScript" id="GDScript_to0a4"]
 script/source = "extends Node3D
 
 @onready var bat_model: Node3D = %bat_model
+@onready var canvas_layer: CanvasLayer = %CanvasLayer
+
+func _ready() -> void:
+	canvas_layer.visible = false
 
 func take_damage():
 	bat_model.hurt()
+
+func game_over():
+	canvas_layer.visible = true
+	get_tree().paused = true
+
+
+func _on_end_zone_player_killer_entered(area: Area3D) -> void:
+	game_over()
 "
 
 [sub_resource type="Environment" id="Environment_ijeiy"]
@@ -80,6 +93,9 @@ _data = {
 &"RESET": SubResource("Animation_l5ub2"),
 &"turning_plateform": SubResource("Animation_to0a4")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_famlx"]
+size = Vector3(4025.8596, 1.9541016, 165.38843)
 
 [node name="Game" type="Node3D" unique_id=736855]
 script = SubResource("GDScript_to0a4")
@@ -247,8 +263,9 @@ use_collision = true
 size = Vector3(27, 22, 48)
 material = ExtResource("2_hjeur")
 
-[node name="SpawnersManager" type="Node" parent="." unique_id=624069427]
+[node name="SpawnersManager" type="Node" parent="." unique_id=624069427 node_paths=PackedStringArray("spawners")]
 script = ExtResource("6_8jqrf")
+spawners = [NodePath("Spawner"), NodePath("Spawner2"), NodePath("Spawner3")]
 
 [node name="Spawner" parent="SpawnersManager" unique_id=2142684305 instance=ExtResource("6_to0a4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 7, 30)
@@ -262,4 +279,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7936707, 2.1306915, -30.375
 [node name="SpawnTimer" type="Timer" parent="SpawnersManager" unique_id=622784395]
 autostart = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=154054084]
+unique_name_in_owner = true
+process_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=307091560]
+offset_right = 1923.0
+offset_bottom = 1085.0
+color = Color(1, 1, 1, 0.44705883)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1612388374]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -96.5
+offset_bottom = 96.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.10052004, 0.33443132, 0.06367304, 1)
+theme_override_font_sizes/font_size = 69
+text = "Game Over
+Press [R] to restart"
+horizontal_alignment = 1
+
+[node name="EndZonePlayerKillerArea3D" type="Area3D" parent="." unique_id=2001198029]
+script = ExtResource("7_8jqrf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndZonePlayerKillerArea3D" unique_id=218309328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.1624072, 0)
+shape = SubResource("BoxShape3D_famlx")
+
 [connection signal="timeout" from="SpawnersManager/SpawnTimer" to="SpawnersManager" method="_on_spawn_timer_timeout"]
+[connection signal="area_entered" from="EndZonePlayerKillerArea3D" to="." method="_on_end_zone_player_killer_entered"]

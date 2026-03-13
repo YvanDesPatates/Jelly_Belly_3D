@@ -99,6 +99,8 @@ _data = {
 }
 
 [node name="Ennemy" type="RigidBody3D" unique_id=730489655]
+collision_layer = 3
+collision_mask = 3
 gravity_scale = 0.0
 script = ExtResource("1_12j10")
 

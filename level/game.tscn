@@ -305,6 +305,8 @@ Press [R] to restart"
 horizontal_alignment = 1
 
 [node name="EndZonePlayerKillerArea3D" type="Area3D" parent="." unique_id=2001198029]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("7_8jqrf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EndZonePlayerKillerArea3D" unique_id=218309328]
